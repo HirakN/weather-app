@@ -4,6 +4,10 @@ const hbs = require('hbs')
 const geocode = require('./utils/geocode.js')
 const forecast = require('./utils/forecast.js')
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const app = express()
 // Use PORT variable used by heroku or 3000 if not set
 const port = process.env.PORT || 3000

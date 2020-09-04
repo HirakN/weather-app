@@ -1,12 +1,17 @@
 const request = require('request')
 
+const mapbox_token = process.env.MAPBOX_TOKEN || "pk.eyJ1IjoiZ2hvc3RlcnIiLCJhIjoiY2tjanE0aWQ1MWxhMTJ0cDBoa2U1NTQ1cSJ9.HCIsFE2pF4hcRINBfAFgoQ"
+
 const geoCode = (address, callback) => {
-    const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(address) + ".json?access_token=pk.eyJ1IjoiZ2hvc3RlcnIiLCJhIjoiY2tjanE0aWQ1MWxhMTJ0cDBoa2U1NTQ1cSJ9.HCIsFE2pF4hcRINBfAFgoQ&limit=1"
+    const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(address) + ".json?access_token=" + mapbox_token + "&limit=1"
 
     request({url: url, json: true}, (error, { body }) => {
+        console.log(body)
         if (error) {
-            callback('Unable to connect to location services.', undefined)
-        } else if (body.features.length === 0) {
+            callback('Unable to connect to mapbox location services.', undefined)
+        } else if (body?.message) {
+            callback('mapbox api: '+body.message, undefined)
+        } else if (body?.features?.length === 0) {
             callback('Unable to find location, Try another search', undefined)
         } else {
             const latitude = body.features[0].center[1]

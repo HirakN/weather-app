@@ -1,7 +1,7 @@
 const request = require('request')
 
-const access_key = process.env.WEATHERSTACK_KEY || "63fc7d6bad403d16d3da55637c202805"
-// http://api.weatherstack.com/current?access_key=63fc7d6bad403d16d3da55637c202805&query=
+const access_key = process.env.WEATHERSTACK_KEY
+
 const forecast = (lat, long, callback) => {
     const url= 'http://api.weatherstack.com/current?access_key=' + access_key + '&query=' + lat + ',' + long
 

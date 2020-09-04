@@ -1,7 +1,3 @@
-console.log('client side javascript file is loaded')
-
-
-
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 
@@ -29,8 +25,7 @@ weatherForm.addEventListener('submit', (event) => {
             } else {
                 msg1.textContent = data.location   
                 msg2.textContent = data.forecastData
-                weatherImage.src = data.weatherIconsURL  
-                console.log(data.location, data.forecastData)
+                weatherImage.src = data.weatherIconsURL
             }
         })
     })

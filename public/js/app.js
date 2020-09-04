@@ -14,7 +14,7 @@ weatherForm.addEventListener('submit', (event) => {
     
     address = search.value
     
-    query = 'http://localhost:3000/weather?address=' + address
+    query = '/weather?address=' + address
     
     msg1.textContent = 'Loading..'    
     msg2.textContent = ''    

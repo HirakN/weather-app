@@ -11,7 +11,7 @@ body {
 
 .main-content {
     flex-grow: 1;
-}
+}   
 
 footer {
     color: #888888;
@@ -38,6 +38,10 @@ header a {
 
 .portrait {
     width: 600px;
+}
+
+#weather-img {
+    margin-top: 16px;
 }
 
 input {
